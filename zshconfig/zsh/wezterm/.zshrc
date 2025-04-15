@@ -1,4 +1,3 @@
-
 ### Added by Zinit's installer
 
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -41,6 +40,14 @@ zinit wait lucid light-mode for \
 
 # custom settings
 setopt HIST_IGNORE_ALL_DUPS
+
+# fnm
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$HOME/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # starship blank line
 precmd() { precmd() { echo "" } }
